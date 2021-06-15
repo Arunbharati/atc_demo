@@ -1,24 +1,45 @@
-# README
+# Demo App
+#Software required
+ * Ruby - 2.7.0
+ * Rails - 6.1.3
+ * Postgress
+ * Redis
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###Getting Started
 
-Things you may want to cover:
+#Installing a Local Server
 
-* Ruby version
+First things first, you'll need to install Ruby 2.7.0.
 
-* System dependencies
+```sh
+$ rvm install 2.7.0
+```
 
-* Configuration
+Next, you'll need to make sure that you have PostgreSQL installed.
 
-* Database creation
+```sh
+$ brew install postgres
+```
 
-* Database initialization
+Next, you'll need to make sure that you have Redis installed.
 
-* How to run the test suite
+```sh
+$ brew install redis
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Checkout the repository by running command on terminal
 
-* Deployment instructions
+```sh
+$ git clone git@github.com:Arunbharati/atc_demo.git
+```
+# Run the below Tasks under project directory on terminal
 
-* ...
+##Change directory
+```sh
+$ cd atc_demo
+```
+
+##Installing Dependencies
+```sh
+$ bundle install
+```
