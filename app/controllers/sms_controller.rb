@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class SmsController < ApplicationController
   skip_before_action :http_authenticate, only: :index
-  protect_from_forgery with: :null_session, only: %i(inbound outbound)
+  protect_from_forgery with: :null_session, only: %i[inbound outbound]
 
   # Home Page
-  def index
-  end
+  def index; end
 
   # api - inbound/sms
   def inbound
@@ -14,7 +15,7 @@ class SmsController < ApplicationController
     else
       render json: { 'message': '', 'error': user_inputs.errors.full_messages }
     end
-  rescue
+  rescue StandardError
     render json: { 'message': '', 'error': I18n.t('errors.messages.unknown_failure') }
   end
 
@@ -26,7 +27,7 @@ class SmsController < ApplicationController
     else
       render json: { 'message': '', 'error': user_inputs.errors.full_messages }
     end
-  rescue
+  rescue StandardError
     render json: { 'message': '', 'error': I18n.t('errors.messages.unknown_failure') }
   end
 

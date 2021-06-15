@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # input validator for inbound and outbound sms
 class InputValidator
   include ActiveModel::Validations
@@ -6,9 +8,9 @@ class InputValidator
 
   validates :from, :to, :text, presence: true
   validates :from, :to, length: { minimum: 6, maximum: 16,
-                        message: I18n.t('errors.messages.invalid')}
+                                  message: I18n.t('errors.messages.invalid') }
   validates :text, length: { minimum: 1, maximum: 120,
-                   message: I18n.t('errors.messages.invalid')}
+                             message: I18n.t('errors.messages.invalid') }
   validate :validate_to_input, :validate_from_input, :stop_request,
            :validate_api_call_count
 

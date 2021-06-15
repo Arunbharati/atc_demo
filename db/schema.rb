@@ -20,19 +20,9 @@ ActiveRecord::Schema.define(version: 2021_06_14_185301) do
     t.string "username", limit: 30
   end
 
-  create_table "accounts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "phone_number", id: :serial, force: :cascade do |t|
     t.string "number", limit: 40
     t.integer "account_id"
-  end
-
-  create_table "phone_numbers", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "phone_number", "account", name: "phone_number_account_id_fkey"
