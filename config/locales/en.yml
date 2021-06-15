@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    messages:
+      blank: 'is missing'
+      invalid: 'is invalid'
+      parameter_not_found: 'parameter not found'
+      unknown_failure: 'unknown failure'

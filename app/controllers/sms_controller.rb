@@ -6,26 +6,28 @@ class SmsController < ApplicationController
   def index
   end
 
+  # api - inbound/sms
   def inbound
-    user_inputs = InputValidator.new(current_account, params)
-    if user_inputs.valid?
+    user_inputs = InputValidator.new(current_account, 'inbound', params)
+    if user_inputs.valid? && InboundService.new(params).process
       render json: { 'message': 'inbound sms ok', 'error': '' }
     else
       render json: { 'message': '', 'error': user_inputs.errors.full_messages }
     end
   rescue
-    render json: { 'message': '', 'error': 'unknown failure' }
+    render json: { 'message': '', 'error': I18n.t('errors.messages.unknown_failure') }
   end
 
+  # api - outbound/sms
   def outbound
-    user_inputs = InputValidator.new(current_account, params)
-    if user_inputs.valid?
+    user_inputs = InputValidator.new(current_account, 'outbound', params)
+    if user_inputs.valid? && OutboundService.new(params).process
       render json: { 'message': 'outbound sms ok', 'error': '' }
     else
       render json: { 'message': '', 'error': user_inputs.errors.full_messages }
     end
   rescue
-    render json: { 'message': '', 'error': 'unknown failure' }
+    render json: { 'message': '', 'error': I18n.t('errors.messages.unknown_failure') }
   end
 
   # We have created this method to return HTTP code 405 as by default rails will
