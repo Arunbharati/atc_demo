@@ -43,3 +43,24 @@ $ cd atc_demo
 ```sh
 $ bundle install
 ```
+
+#configuration settings for accessing database
+ * Open database.yml file (in config folder)
+ # Update following points:
+  * database (Database name)
+  * username (Database username)
+  * password (Database password)
+
+##Creating database
+```sh
+$ ralis db:create
+```
+##Restore database from dump file
+```sh
+$ psql -d atc_demo < schema.sql
+```
+##add .env file to project directory and update with below environment variables.
+
+  REDIS_URL=redis://127.0.0.1
+  RESET_INBOUND_CACHE_TIME=14400
+  RESET_OUTBOUND_CACHE_TIME=86400
